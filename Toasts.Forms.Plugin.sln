@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toasts.Forms.Plugin.Abstractions", "Toasts.Forms.Plugin.Abstractions\Toasts.Forms.Plugin.Abstractions.csproj", "{A6005E12-DE46-4F28-8F97-8B8564AF191C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toasts.Forms.Plugin.Abstractions", "Toasts.Forms.Plugin.Abstractions\Toasts.Forms.Plugin.Abstractions.csproj", "{A6005E12-DE46-4F28-8F97-8B8564AF191C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toasts.Forms.Plugin.Droid", "Toasts.Forms.Plugin.Droid\Toasts.Forms.Plugin.Droid.csproj", "{C7D66D88-6B87-4528-820C-F09516F6A3AC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sample", "Sample", "{ECF5C521-9DE4-4A54-8BC1-62C7FE1B28B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toasts.Forms.Plugin.Sample", "Sample\Toasts.Forms.Plugin.Sample\Toasts.Forms.Plugin.Sample.csproj", "{553A881C-278B-4A3C-9C79-606EDEEE3270}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toasts.Forms.Plugin.Sample", "Sample\Toasts.Forms.Plugin.Sample\Toasts.Forms.Plugin.Sample.csproj", "{553A881C-278B-4A3C-9C79-606EDEEE3270}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toasts.Forms.Plugin.Sample.iOS", "Sample\Toasts.Forms.Plugin.Sample.iOS\Toasts.Forms.Plugin.Sample.iOS.csproj", "{996BAC7F-CAA7-475A-80D7-2D00C03AEB49}"
 EndProject
