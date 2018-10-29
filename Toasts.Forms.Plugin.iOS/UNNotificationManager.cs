@@ -15,6 +15,9 @@
         private int _count = 0;
         private static object _lock = new object();
 
+        private static bool _firstNotification = true;
+        private IUNUserNotificationCenterDelegate PreviousDelegate = null;
+
         public INotificationResult Notify(INotificationOptions options)
         {
             var notificationCenter = UNUserNotificationCenter.Current;
@@ -38,7 +41,13 @@
             _count++;
 
             var request = UNNotificationRequest.FromIdentifier(id, content, trigger);
-            notificationCenter.Delegate = new UserNotificationCenterDelegate(id, (identifier, notificationResult) =>
+            if (_firstNotification)
+            {
+                _firstNotification = false;
+                PreviousDelegate = notificationCenter.Delegate;
+            }
+            
+            notificationCenter.Delegate = new UserNotificationCenterDelegate(id, PreviousDelegate, (identifier, notificationResult) =>
             {
                 lock (_lock)
                     if (_resetEvents?.ContainsKey(identifier) == true && _eventResult?.ContainsKey(identifier) == false)
@@ -76,12 +85,14 @@
             private string _id;
             private bool _cancel;
             private bool _allowTapInNotificationCenter;
-            public UserNotificationCenterDelegate(string id, Action<string, NotificationResult> action, bool cancel, bool allowTapInNotificationCenter)
+            private IUNUserNotificationCenterDelegate _previousDelegate;
+            public UserNotificationCenterDelegate(string id, IUNUserNotificationCenterDelegate previousDelegate, Action<string, NotificationResult> action, bool cancel, bool allowTapInNotificationCenter)
             {
                 _action = action;
                 _id = id;
                 _cancel = cancel;
                 _allowTapInNotificationCenter = allowTapInNotificationCenter;
+                _previousDelegate = previousDelegate;
             }
 
             public override void WillPresentNotification(UNUserNotificationCenter center, UNNotification notification, Action<UNNotificationPresentationOptions> completionHandler)
@@ -98,8 +109,13 @@
                     nsTimer.Invalidate();
                 });
 
-                // Shows toast on screen
-                completionHandler(UNNotificationPresentationOptions.Alert);
+                if (_previousDelegate != null) {
+                    _previousDelegate.WillPresentNotification(center, notification, completionHandler);
+                }
+                else {
+                    // Shows toast on screen
+                    completionHandler(UNNotificationPresentationOptions.Alert);
+                }
             }
 
 
