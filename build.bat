@@ -1,3 +1,5 @@
+REM Commandes utiles : 
+REM nuget sources Add -Name AppsoluTaxi 
 REM msbuild Toasts.Forms.Plugin.sln /t:Clean;Build /p:Configuration=Release
 
 del *.nupkg

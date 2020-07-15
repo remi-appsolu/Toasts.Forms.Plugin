@@ -2,7 +2,7 @@
 <package>
   <metadata>
     <id>Toasts.Forms.Plugin</id>
-    <version>3.3.2-appsolu1</version>
+    <version>3.3.2-appsolu2</version>
     <title>Toast Notification Plugin for Xamarin and Windows</title>
     <authors>Egor Bogatov</authors>
     <owners>Egor Bogatov</owners>
